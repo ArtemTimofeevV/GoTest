@@ -2,23 +2,35 @@ package main
 
 import "fmt"
 
-type user struct {
-	name    string
-	age     int
-	number  string
-	isclose bool
-	rating  float64
+type User struct {
+	Name   string
+	Rating float64
+}
+
+func (u User) ChangeUser() {
+	fmt.Print("Всем привет! Меня зовут ", u.Name, ".\n")
+	fmt.Println("Из-за моего рейтинга я не могу пройти тест.")
+	fmt.Print("Мой текущий рейтинг: ", u.Rating, ".\n")
+	fmt.Print("Я хочу поменять имя на Егор.\n")
+	u.Name = "Егор"
+	fmt.Print("Теперь меня зовут ", u.Name, ".\n")
+}
+
+func (u *User) RatingUp(rating float64) {
+	if u.Rating+rating <= 10 {
+		u.Rating += rating
+		fmt.Printf("Рейтинг повышён до ")
+	} else {
+		fmt.Printf("Я не смог поднять рейтинг\n")
+	}
 }
 
 func main() {
-	user := user{
-		name:    "Сергей",
-		age:     20,
-		number:  "+7 (985) 234 - 43 - 41",
-		isclose: true,
-		rating:  0.1,
+	User := User{
+		Name:   "Александр",
+		Rating: 1.0,
 	}
-
-	fmt.Println("Users: ", user)
-	fmt.Println("Age: ", user.age)
+	User.ChangeUser()
+	User.RatingUp(5.1)
+	fmt.Println(User.Rating)
 }
