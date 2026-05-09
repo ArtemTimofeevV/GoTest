@@ -1,17 +1,24 @@
 package main
 
-import (
-	"fmt"
-	"math/rand"
-)
+import "fmt"
+
+type user struct {
+	name    string
+	age     int
+	number  string
+	isclose bool
+	rating  float64
+}
 
 func main() {
-	for i := 0; i <= 5; i++ {
-		fmt.Println(i)
+	user := user{
+		name:    "Сергей",
+		age:     20,
+		number:  "+7 (985) 234 - 43 - 41",
+		isclose: true,
+		rating:  0.1,
 	}
-	if rand.Intn(5) == 3 {
-		fmt.Println("Победа")
-	} else {
-		fmt.Print("Проигрыш!")
-	}
+
+	fmt.Println("Users: ", user)
+	fmt.Println("Age: ", user.age)
 }
