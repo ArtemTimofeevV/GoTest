@@ -1,34 +1,32 @@
 package main
 
-import "fmt"
-
-type User struct {
-	Name   string
-	Rating float64
-}
-
-func (u User) ChangeUser() {
-	fmt.Print("Всем привет! Меня зовут ", u.Name, ".\n")
-	fmt.Println("Из-за моего рейтинга я не могу пройти тест.")
-	fmt.Print("Мой текущий рейтинг: ", u.Rating, ".\n")
-	fmt.Print("Я хочу поменять имя на Егор.\n")
-	u.Name = "Егор"
-	fmt.Print("Теперь меня зовут ", u.Name, ".\n")
-}
-
-func (u *User) RatingUp(rating float64) {
-	if u.Rating+rating <= 10 {
-		u.Rating += rating
-		fmt.Printf("Рейтинг повышён до ")
-	} else {
-		fmt.Printf("Я не смог поднять рейтинг\n")
-	}
-}
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
-	arr := [4]int{4, 243, 421, -6}
-
-	for i := 0; i < len(arr); i++ {
-		fmt.Print(i, "й элемент массива: ", arr[i], "\n")
+	var x, maxi, mini, med float64
+	fmt.Scan(&x)
+	maxi = math.Max(math.Max(float64((int(x)%10)), float64(int(x)/100)), float64(int(x)/10%10))
+	mini = math.Min(math.Min(float64((int(x)%10)), float64(int(x)/100)), float64(int(x)/10%10))
+	fmt.Println(maxi, mini)
+	if float64(int(x)/100) != maxi && float64(int(x)/100) != mini {
+		med = float64(int(x) / 100)
+		fmt.Println(1, "aaa")
+	}
+	if float64(int(x)%10) != maxi && float64(int(x)%10) != mini {
+		med = float64(int(x) % 10)
+		fmt.Println(2, "bbb")
+	}
+	if float64(int(x)/10%10) != maxi && float64(int(x)/10%10) != mini {
+		med = float64(int(x) / 10 % 10)
+		fmt.Println(3, "ccc")
+	}
+	fmt.Println(med)
+	if maxi-mini == med {
+		fmt.Println("Число интересное")
+	} else {
+		fmt.Print("Число неинтересное")
 	}
 }
