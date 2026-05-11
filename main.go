@@ -26,11 +26,9 @@ func (u *User) RatingUp(rating float64) {
 }
 
 func main() {
-	User := User{
-		Name:   "Александр",
-		Rating: 1.0,
+	arr := [4]int{4, 243, 421, -6}
+
+	for i := 0; i < len(arr); i++ {
+		fmt.Print(i, "й элемент массива: ", arr[i], "\n")
 	}
-	User.ChangeUser()
-	User.RatingUp(5.1)
-	fmt.Println(User.Rating)
 }
